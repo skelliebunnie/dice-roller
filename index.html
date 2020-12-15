@@ -1,0 +1,139 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dice Roller</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+	<link rel="stylesheet" href="http://base.framework/public/css/style.css">
+	<style>
+		header.site-header { background-image: none; }
+		.row.h-100 { height: 100%; }
+		#diceBox { columns: 2; text-align: center; }
+		#diceMath { margin-top: 2rem; text-align: center; }
+		.btn {
+			outline: none;
+			border: 3px solid grey;
+			border-radius: 0;
+		}
+		.btn-wide {
+			width: 15%;
+		}
+		.btn-info {
+			border-color: #066;
+			font-size: xx-large;
+		}
+		.btn-success {
+			margin-bottom: 0;
+			border-color: forestgreen;
+		}
+		.btn-success:first-child {
+			margin-left: 0;
+		}
+		.btn-warn {
+			border-color: maroon;
+			cursor: pointer;
+			margin: 0.5rem 0;
+			padding: 0.4rem 0.7rem;
+		}
+		#results {
+			padding: 0;
+			margin: 0;
+		}
+		#results h3 {
+			font-size: 4rem;
+		}
+		ol {
+			margin-top: 0;
+			padding-top: 0;
+			list-style-type: decimal;
+		}
+		ol > li {
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: space-between;
+			margin: 0.2rem 0;
+			padding: 0.2rem 0 0.4rem;
+			line-height: 2rem;
+		}
+		.item {
+			flex: 1 0 auto;
+			margin-left: 0.5rem;
+			padding-left: .5rem;
+			border-bottom: 1px solid dimgray;
+		}
+		.fa-times {
+			position: relative;
+			right: 1rem;
+			color: maroon;
+		}
+		.fa-times:hover,
+		.fa-times:focus {
+			color: red;
+			cursor: pointer;
+		}
+		.pad-top-none { padding-top: 0; }
+		.margin-top-none { margin-top: 0; }
+		.pad-bottom-none { padding-bottom: 0; }
+		.margin-bottom-none { margin-bottom: 0; }
+		@media all and (min-width: 768px) {
+			ol { max-width: 80%; }
+		}
+	</style>
+</head>
+<body>
+	<header class="site-header bg-primary-400">
+		<div class="row">
+			<section class="col col-12">
+				<h1>DICE ROLLER</h1>
+			</section>
+		</div>
+	</header>
+	<!-- instructions and list -->
+	<div class="row bg-neutral-50">
+		<aside class="site-sidebar col-3 col-container bg-tertiary-100">
+			<div class="row">
+				<div class="col col-12">
+					<h3>Instructions</h3>
+					<p>Build a list of options using the form on the right. Edit the list (shown in the middle) as necessary.</p>
+					<p>When your list is built, click "roll dice"! The number & type of dice will automatically be selected based on the number of list items.</p>
+					<p><span class="notice">NOTE!</span> In order to ensure that all options are possible when 2 or more dice are rolled, a secondary step has been introduced -- instead of always *adding* the results, each new die rolled may be *subtracted* from the running total. One (1) is the lowest you can get, though.</p>
+				</div>
+			</div>
+		</aside>
+		<main class="site-main col-5 col-container justify-center">
+			<div class="row h-100">
+				<div class="col bg-secondary-200">
+					<h2 id="itemTitle" style="no-pad no-margin">Items <span id="itemCount">(0)</span></h2>
+					<form id="addItemForm" class="col col-4 no-pad no-margin">
+						<label for="addItem">Add: </label>
+						<input type="text" id="addItem">
+					</form>
+					<div id="predefinedListButtons"></div>
+					<button id="clearBtn" class="btn btn-warn">Clear</button>
+					<ol id="items"></ol>
+				</div>
+			</div>
+		</main>
+		<div class="col col-4 col-container">
+			<div class="col col-12 text-center">
+				<button id="rollBtn" class="btn btn-info btn-wide">Roll</button>
+			</div>
+			<div id="results" class="col col-12 text-center">
+				<h3 id="total">X</h3>
+				<p id="itemResult">--</p>
+			</div>
+			<div class="col col-12 text-center">
+				<h4 class="pad-top-none margin-bottom-none">Dice Rolls & Math</h4>
+				<div id="diceBox"></div>
+				<div id="diceMath"></div>
+			</div>
+		</div>
+	</div>
+	<footer class="site-footer row bg-neutral-700">
+		<div class="col col-10 text-center">
+			<p>Copyright &copy; 2020 A.Knight / Skelliebunnie</p>
+		</div>
+	</footer>
+	<script src="script.js"></script>
+</body>
+</html>
